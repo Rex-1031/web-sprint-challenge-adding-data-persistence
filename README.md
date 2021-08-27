@@ -10,7 +10,7 @@ You are not allowed to collaborate during the sprint challenge.
 
 ## Project Set Up
 
-- [ ] Run `npm install` to install your dependencies.
+- [x] Run `npm install` to install your dependencies.
 - [ ] Run tests locally executing `npm test`.
 
 ## Project Instructions
@@ -114,4 +114,5 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 1. Explain the difference between Relational Databases and SQL.
 2. Why do tables need a Primary Key?
 3. What is the name given to a table column that references the Primary Key on another table?
+    Foreign Key
 4. What do we need in order to have a _many to many_ relationship between two tables?
