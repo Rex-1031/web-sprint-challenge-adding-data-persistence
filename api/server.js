@@ -7,18 +7,12 @@ const taskRouter = require('./task/router.js');
 const server = express();
 
 
+
+
+server.use('/api/projects', projectRouter);
+server.use('/api/resources', resourceRouter);
+server.use('/api/tasks', taskRouter);
+
 server.use(express.json());
-
-
-server.use('*', (req, res) =>{
-    res.json({api: 'Test...'})
-});
-
-
-server.use('/api/project', projectRouter);
-server.use('/api/resource', resourceRouter);
-server.use('/api/task', taskRouter);
-
-
 
 module.exports = server

@@ -2,30 +2,30 @@
 exports.up = async function(knex) {
     //tables with no foreign keys first
     await knex.schema
-    .createTable('project', tbl =>{
+    .createTable('projects', tbl =>{
         tbl.increments('project_id')
         tbl.string('project_name', 100).notNullable()
         tbl.string('project_description', 250)
-        tbl.integer('project_completed').unsigned().defaultTo(0)
+        tbl.boolean('project_completed').unsigned().defaultTo(false)
     })
-    .createTable('resource', tbl=>{
+    .createTable('resources', tbl=>{
         tbl.increments('resource_id')
         tbl.string('resource_name', 100).notNullable().unique()
         tbl.string('resource_description', 250)
     })
-    .createTable('task', tbl=>{
+    .createTable('tasks', tbl=>{
         tbl.increments('task_id')
         tbl.string('task_description', 250).notNullable()
         tbl.string('notes', 250)
-        tbl.integer('task_completed')
-            .unsigned()
+        tbl.boolean('task_completed')
             .notNullable()
-            .defaultTo(0)
+            .defaultTo(false)
         tbl.integer('project_id')
             .notNullable()
             .unsigned()
             .references('project_id')
             .inTable('project')
+            .onDelete('RESTRICT')
 
     })
     .createTable('project_resources', tbl =>{
@@ -40,6 +40,7 @@ exports.up = async function(knex) {
             .notNullable()
             .references('resource_id')
             .inTable('resource')
+            .onDelete('RESTRICT')
     })
 
 };
@@ -47,7 +48,8 @@ exports.up = async function(knex) {
 exports.down =  async function(knex) {
     //tables with no foreign keys last 
     await knex.schema
-    .dropTableIfExists('task')
+    .dropTableIfExists('project_resources')
+    .dropTableIfExists('tasks')
     .dropTableIfExists('resources')
-    .dropTableIfExists('project')
+    .dropTableIfExists('projects')
 };

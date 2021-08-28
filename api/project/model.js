@@ -1,15 +1,15 @@
 const  db = require('../../data/dbConfig.js');
 
 const find =  () =>{
-    return db('project')
+    return db('projects')
 }
 
-const findById = project_id =>{
-    return db('project').where('project_id', project_id).first()
+const findById = id =>{
+    return db('projects').where('project_id', id).first()
 }
-const add = (project) =>{
-    return db('project').insert(project)
-    .then(([project_id])=> findById(project_id))
+const add = (projects) =>{
+    return db('projects').insert(projects)
+    .then((id)=> findById(id))
 }
 
-module.exports = { find, findById, add,}
+module.exports = { find, add,}
