@@ -4,7 +4,7 @@ const find =  () =>{
     return db('project')
 }
 
-const findById = id =>{
+const findById = project_id =>{
     return db('project').where('project_id', project_id).first()
 }
 const add = (project) =>{
