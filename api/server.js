@@ -1,8 +1,8 @@
 const express = require('express');
 
 const projectRouter = require('./project/router.js');
-// const resourceRouter = require('./resource/router.js');
-// const taskRouter = require('./task/router.js');
+const resourceRouter = require('./resource/router.js');
+const taskRouter = require('./task/router.js');
 
 const server = express();
 
@@ -16,8 +16,8 @@ server.use('*', (req, res) =>{
 
 
 server.use('/api/project', projectRouter);
-// server.use('/api/resource', resourceRouter);
-// server.use('/api/task', taskRouter);
+server.use('/api/resource', resourceRouter);
+server.use('/api/task', taskRouter);
 
 
 
