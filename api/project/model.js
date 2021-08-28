@@ -5,11 +5,11 @@ const find =  () =>{
 }
 
 const findById = id =>{
-    return db('projects').where('project_id', id).first()
+    return db('projects').where({'project_id': id})
 }
-const add = (projects) =>{
-    return db('projects').insert(projects)
-    .then((id)=> findById(id))
+const add = (project) =>{
+    return db('projects').insert(project)
+    .then((id)=> findById(id).first())
 }
 
 module.exports = { find, add,}

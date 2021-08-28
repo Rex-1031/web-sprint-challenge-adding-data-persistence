@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', async(req, res, next) =>{
     try{
         const resource = await Resource.find()
-        res.json({resource})
+        res.json(resource)
     }catch(err){
         next(err)
     }
@@ -17,7 +17,7 @@ router.get('/', async(req, res, next) =>{
 router.post('/', async(req, res, next)=>{
     try{
         const newResource = await Resource.add(req.body)
-        res.json(newResource)
+        res.status(201).json(newResource)
     }catch(err){
         next(err)
     }

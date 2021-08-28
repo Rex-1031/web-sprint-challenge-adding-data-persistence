@@ -4,12 +4,12 @@ const find =  () =>{
     return db('resources')
 }
 
-const findById = resource_id =>{
-    return db('resources').where('resource_id', resource_id).first()
+const findById = id =>{
+    return db('resources').where({'resource_id': id})
 }
-const add = (resources) =>{
-    return db('resources').insert(resources)
-    .then((id)=> findById(id))
+const add = (resource) =>{
+    return db('resources').insert(resource)
+    .then((id)=> findById(id).first())
 }
 
-module.exports = { find, findById, add,}
+module.exports = { find, add,}

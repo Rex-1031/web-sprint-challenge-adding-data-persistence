@@ -16,7 +16,7 @@ exports.up = async function(knex) {
     .createTable('tasks', tbl=>{
         tbl.increments('task_id')
         tbl.string('task_description', 250).notNullable()
-        tbl.string('notes', 250)
+        tbl.string('task_notes', 250)
         tbl.boolean('task_completed')
             .notNullable()
             .defaultTo(false)
@@ -24,7 +24,7 @@ exports.up = async function(knex) {
             .notNullable()
             .unsigned()
             .references('project_id')
-            .inTable('project')
+            .inTable('projects')
             .onDelete('RESTRICT')
 
     })
@@ -34,12 +34,12 @@ exports.up = async function(knex) {
             .unsigned()
             .notNullable()
             .references('project_id')
-            .inTable('project')
+            .inTable('projects')
         tbl.integer('resource_id')
             .unsigned()
             .notNullable()
             .references('resource_id')
-            .inTable('resource')
+            .inTable('resources')
             .onDelete('RESTRICT')
     })
 

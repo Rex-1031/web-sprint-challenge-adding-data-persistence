@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.get('/', async(req, res, next) =>{
     try{
-        const task = await Task.getAll()
-        res.json(task)
+        const task = await Task.find()
+        res.json({task})
     }catch(err){
         next(err)
     }
@@ -16,8 +16,8 @@ router.get('/', async(req, res, next) =>{
 
 router.post('/', async(req, res, next)=>{
     try{
-        const newtask = await Task.create(req.body)
-        res.json(newtask)
+        const newtask = await Task.add(req.body)
+        res.json({newtask})
     }catch(err){
         next(err)
     }
