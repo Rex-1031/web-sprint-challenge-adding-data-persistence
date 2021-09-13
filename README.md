@@ -10,7 +10,7 @@ You are not allowed to collaborate during the sprint challenge.
 
 ## Project Set Up
 
-- [ ] Run `npm install` to install your dependencies.
+- [x] Run `npm install` to install your dependencies.
 - [ ] Run tests locally executing `npm test`.
 
 ## Project Instructions
@@ -41,26 +41,26 @@ Add `"start"`. `"server"`, `"migrate"` and `"rollback"` scripts to the `package.
 
 Build the migration(s) in Knex inside the `data/migrations` folder using appropriate data types and constraints. **You must use the table names and the column names described below.** To give a primary key a name different than `id`, do `table.increments("project_id")` instead of `table.increments()`.
 
-- [ ] A **project** is what needs to be done and is stored in a `projects` table with the following columns:
+- [x] A **project** is what needs to be done and is stored in a `projects` table with the following columns:
 
-  - [ ] `project_id` - primary key
-  - [ ] `project_name` - required
-  - [ ] `project_description` - optional
-  - [ ] `project_completed` - the database defaults it to `false` (integer 0) if not provided
+  - [x] `project_id` - primary key
+  - [x] `project_name` - required
+  - [x] `project_description` - optional
+  - [x] `project_completed` - the database defaults it to `false` (integer 0) if not provided
 
-- [ ] A **resource** is anything needed to complete a project and is stored in a `resources` table with the following columns:
+- [x] A **resource** is anything needed to complete a project and is stored in a `resources` table with the following columns:
 
-  - [ ] `resource_id` - primary key
-  - [ ] `resource_name` - required and unique
-  - [ ] `resource_description` - optional
+  - [x] `resource_id` - primary key
+  - [x] `resource_name` - required and unique
+  - [x] `resource_description` - optional
 
-- [ ] A **task** is one of the steps needed to complete a project and is stored in a `tasks` table with the following columns:
+- [x] A **task** is one of the steps needed to complete a project and is stored in a `tasks` table with the following columns:
 
-  - [ ] `task_id` - primary key
-  - [ ] `task_description` - required
-  - [ ] `task_notes` - optional
-  - [ ] `task_completed` - the database defaults it to `false` (integer 0) if not provided
-  - [ ] `project_id` - required and points to an actual `project_id` in the `projects` table
+  - [x] `task_id` - primary key
+  - [x] `task_description` - required
+  - [x] `task_notes` - optional
+  - [x] `task_completed` - the database defaults it to `false` (integer 0) if not provided
+  - [x] `project_id` - required and points to an actual `project_id` in the `projects` table
 
 - [ ] A **resource assignment** connects a resource and a project, and is stored in a `project_resources` table. You decide what columns to use.
 
@@ -72,7 +72,7 @@ Build an API inside the `api` folder with endpoints for:
   - Example of response body: `{"resource_id":1,"resource_name":"foo","resource_description":null}`
 
 - [ ] `[GET] /api/resources`
-  - Example of response body: `[{"resource_id":1,"resource_name":"foo","resource_description":null}]`
+  - Example of response body: `[{}"resource_id":1,"resource_name":"foo","resource_description":null]`
 
 - [ ] `[POST] /api/projects`
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
@@ -112,6 +112,13 @@ Build an API inside the `api` folder with endpoints for:
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain the difference between Relational Databases and SQL.
+    A relational Database is a type of database where  information is stored in  tables. SQL is a language used for database management. 
+
 2. Why do tables need a Primary Key?
+    A Primary Key is used as an identifier for a table so data inside of it can be parsed. 
+
 3. What is the name given to a table column that references the Primary Key on another table?
+    Foreign Key
+
 4. What do we need in order to have a _many to many_ relationship between two tables?
+    A table known as a intermediary table. This table holds the foreign keys that reference primary keys on the related tables.
